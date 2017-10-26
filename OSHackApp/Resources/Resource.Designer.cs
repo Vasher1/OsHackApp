@@ -274,6 +274,9 @@ namespace OSHackApp
 			// aapt resource value: 0x7f07000c
 			public const int light = 2131165196;
 			
+			// aapt resource value: 0x7f07000d
+			public const int map = 2131165197;
+			
 			// aapt resource value: 0x7f070001
 			public const int none = 2131165185;
 			
