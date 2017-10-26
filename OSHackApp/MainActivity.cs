@@ -8,13 +8,23 @@ namespace OSHackApp
     [Activity(Label = "OSHackApp", MainLauncher = true)]
     public class MainActivity : Activity, IOnMapReadyCallback
     {
-        public MapFragment _mapFragment;
-        public void OnMapReady(GoogleMap googleMap)
+        private MapFragment _mapFragment;
+        private GoogleMap _map;
+        public void OnMapReady(GoogleMap map)
         {
-            throw new System.NotImplementedException();
+            _map = map;
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            //test
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+            InitMapFragment();
+        }
+
+        private void InitMapFragment()
         {
             _mapFragment = FragmentManager.FindFragmentByTag("map") as MapFragment;
             if (_mapFragment == null)
@@ -30,11 +40,8 @@ namespace OSHackApp
                 fragTx.Commit();
             }
             _mapFragment.GetMapAsync(this);
-            base.OnCreate(savedInstanceState);
-            //test
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
         }
+
     }
 }
 
