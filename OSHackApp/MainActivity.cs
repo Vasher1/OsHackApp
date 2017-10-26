@@ -16,7 +16,7 @@ namespace OSHackApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            // Hello Squid!
+            //test
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
         }
