@@ -21,7 +21,6 @@ namespace OSHackApp
             var options = new MobileBarcodeScanningOptions
             {
                 AutoRotate = true,
-                DisableAutofocus = true,
                 UseFrontCameraIfAvailable = false,
                 TryHarder = true,
                 PossibleFormats = new List<BarcodeFormat>
