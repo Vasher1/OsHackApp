@@ -1,23 +1,13 @@
 ﻿using Android.App;
-using Android.Content.Res;
 using Android.OS;
-using Android.Gms.Maps;
 using Android.Widget;
-using Android.Renderscripts;
 using ZXing.Mobile;
 
 namespace OSHackApp
 {
     [Activity(Label = "OSHackApp", MainLauncher = true)]
-    public class MainActivity : Activity, IOnMapReadyCallback
+    public class MainActivity : Activity
     {
-        private MapFragment _mapFragment;
-        private GoogleMap _map;
-        public void OnMapReady(GoogleMap map)
-        {
-            _map = map;
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,7 +19,7 @@ namespace OSHackApp
 
             qrReader.Click += async (sender, e) =>
             {
-                var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                var scanner = new MobileBarcodeScanner();
                 var result = await scanner.Scan();
                 testText.Text = result.Text;
             };
