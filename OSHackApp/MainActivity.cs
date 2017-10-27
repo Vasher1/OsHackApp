@@ -1,7 +1,9 @@
-﻿using Android.App;
+﻿using System.Collections.Generic;
+using Android.App;
 using Android.OS;
 using Android.Widget;
 using ZXing.Mobile;
+using ZXing;
 
 namespace OSHackApp
 {
@@ -16,11 +18,20 @@ namespace OSHackApp
             EditText testText = FindViewById<EditText>(Resource.Id.TestText);
             Button qrReader = FindViewById<Button>(Resource.Id.QRReader);
             MobileBarcodeScanner.Initialize(Application);
-
+            var options = new MobileBarcodeScanningOptions
+            {
+                AutoRotate = false,
+                UseFrontCameraIfAvailable = true,
+                TryHarder = true,
+                PossibleFormats = new List<BarcodeFormat>
+                {
+                    BarcodeFormat.EAN_8, BarcodeFormat.EAN_13
+                }
+            };
             qrReader.Click += async (sender, e) =>
             {
                 var scanner = new MobileBarcodeScanner();
-                var result = await scanner.Scan();
+                var result = await scanner.Scan(options);
                 testText.Text = result.Text;
             };
             
