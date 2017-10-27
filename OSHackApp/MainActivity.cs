@@ -20,8 +20,9 @@ namespace OSHackApp
             MobileBarcodeScanner.Initialize(Application);
             var options = new MobileBarcodeScanningOptions
             {
-                AutoRotate = false,
-                UseFrontCameraIfAvailable = true,
+                AutoRotate = true,
+                DisableAutofocus = true,
+                UseFrontCameraIfAvailable = false,
                 TryHarder = true,
                 PossibleFormats = new List<BarcodeFormat>
                 {
