@@ -1,7 +1,10 @@
 ﻿using Android.App;
-using Android.Widget;
+using Android.Content.Res;
 using Android.OS;
 using Android.Gms.Maps;
+using Android.Widget;
+using Android.Renderscripts;
+using ZXing.Mobile;
 
 namespace OSHackApp
 {
@@ -18,30 +21,23 @@ namespace OSHackApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            //test
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            InitMapFragment();
-        }
+            EditText testText = FindViewById<EditText>(Resource.Id.TestText);
+            Button qrReader = FindViewById<Button>(Resource.Id.QRReader);
+            MobileBarcodeScanner.Initialize(Application);
 
-        private void InitMapFragment()
-        {
-            _mapFragment = FragmentManager.FindFragmentByTag("map") as MapFragment;
-            if (_mapFragment == null)
+            qrReader.Click += async (sender, e) =>
             {
-                GoogleMapOptions mapOptions = new GoogleMapOptions()
-                    .InvokeMapType(GoogleMap.MapTypeSatellite)
-                    .InvokeZoomControlsEnabled(false)
-                    .InvokeCompassEnabled(true);
-
-                FragmentTransaction fragTx = FragmentManager.BeginTransaction();
-                _mapFragment = MapFragment.NewInstance(mapOptions);
-                fragTx.Add(Resource.Id.map, _mapFragment, "map");
-                fragTx.Commit();
-            }
-            _mapFragment.GetMapAsync(this);
+                var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                var result = await scanner.Scan();
+                testText.Text = result.Text;
+            };
+            
         }
 
-    }
+        
+    };
 }
+
 
