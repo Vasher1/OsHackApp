@@ -14,15 +14,16 @@ namespace OSHackApp
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Main);
+            MobileBarcodeScanner.Initialize(Application);
 
             Button scanButton = (Button)FindViewById(Resource.Id.buttonScan);
-            //TextView text = (TextView)FindViewById(Resource.Id.textView1);
+            TextView text = (TextView)FindViewById(Resource.Id.textView1);
 
             scanButton.Click += async (sender, e) =>
             {
                 var scanner = new MobileBarcodeScanner();
                 var result = await scanner.Scan();
-                //text.Text = result.Text;
+                text.Text = result.Text;
             };
         }
     }
