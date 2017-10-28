@@ -6,7 +6,7 @@ using Android.Views;
 
 namespace OSHackApp
 {
-    [Activity(Label = "OSHackApp", MainLauncher = true)]
+    [Activity(Label = "OSHackApp", Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true)]
     public class MainActivity : Activity 
     {
 
@@ -29,7 +29,15 @@ namespace OSHackApp
             {
                 var scanner = new MobileBarcodeScanner();
                 var result = await scanner.Scan();
-                text.Text = result.Text;
+                switch(result.Text.ToString())
+                {
+                    case "5000159500920":
+                        text.Text = "You scanned some M&Ms!";
+                        break;
+                    default:
+                        text.Text = result.Text;
+                        break;
+                }
             };
         }
     }
