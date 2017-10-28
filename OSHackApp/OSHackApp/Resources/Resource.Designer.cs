@@ -60,6 +60,9 @@ namespace OSHackApp
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f030001
+			public const int app_id = 2130903041;
+			
 			// aapt resource value: 0x7f030000
 			public const int app_name = 2130903040;
 			
