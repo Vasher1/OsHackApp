@@ -1,8 +1,10 @@
-﻿using Android.App;
-using Android.Widget;
+﻿using System.Collections.Generic;
+using Android.App;
+using Android.Graphics;
 using Android.OS;
-using ZXing.Mobile;
+using Android.Widget;
 using Android.Views;
+using ZXing.Mobile;
 
 namespace OSHackApp
 {
