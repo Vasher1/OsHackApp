@@ -26,6 +26,9 @@ namespace OSHackApp
 		
 		public static void UpdateIdValues()
 		{
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::OSHackApp.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::OSHackApp.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::OSHackApp.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Attribute
@@ -41,11 +44,39 @@ namespace OSHackApp
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int buttonScan = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int contentFrame = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int textView1 = 2130968577;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int Main = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int zxingscanneractivitylayout = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int zxingscannerfragmentlayout = 2130837506;
 			
 			static Layout()
 			{
